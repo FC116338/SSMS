@@ -1,0 +1,125 @@
+<mxfile host="app.diagrams.net" modified="2025-12-10T00:00:00.000Z" agent="5.0" version="20.8.23" editor="drawio">
+  <diagram id="SmartSuperMarketER" name="ERD">
+    <mxGraphModel dx="1100" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="1200">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- CUSTOMER -->
+        <mxCell id="Customer" value="Customer&#xa;PK: customerID&#xa;name&#xa;email&#xa;phone&#xa;address&#xa;password" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1">
+          <mxGeometry x="60" y="60" width="180" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- CART -->
+        <mxCell id="Cart" value="Cart&#xa;PK: cartID&#xa;FK: customerID&#xa;createdDate&#xa;totalPrice" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1">
+          <mxGeometry x="320" y="60" width="180" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- RELATION: CUSTOMER - CART -->
+        <mxCell id="Customer-Cart" edge="1" value="1 : 1" style="endArrow=block;startArrow=block;">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell source="Customer" target="Cart"/>
+        </mxCell>
+
+        <!-- PRODUCT -->
+        <mxCell id="Product" value="Product&#xa;PK: productID&#xa;FK: supplierID&#xa;name&#xa;price&#xa;quantity&#xa;category&#xa;description" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1">
+          <mxGeometry x="320" y="300" width="200" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- SUPPLIER -->
+        <mxCell id="Supplier" value="Supplier&#xa;PK: supplierID&#xa;name&#xa;supplyingCategory&#xa;contactNo&#xa;address" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1">
+          <mxGeometry x="600" y="300" width="200" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- PRODUCT - SUPPLIER RELATION -->
+        <mxCell id="Product-Supplier" edge="1" value="M : 1" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell source="Product" target="Supplier"/>
+        </mxCell>
+
+        <!-- CART ITEM -->
+        <mxCell id="CartItem" value="CartItem&#xa;PK: cartID, productID&#xa;quantity&#xa;itemPrice" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1">
+          <mxGeometry x="320" y="180" width="200" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- CART - CARTITEM -->
+        <mxCell id="Cart-CartItem" edge="1" value="1 : M" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell source="Cart" target="CartItem"/>
+        </mxCell>
+
+        <!-- PRODUCT - CARTITEM -->
+        <mxCell id="Product-CartItem" edge="1" value="1 : M" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell source="Product" target="CartItem"/>
+        </mxCell>
+
+        <!-- EMPLOYEE -->
+        <mxCell id="Employee" value="Employee&#xa;PK: employeeID&#xa;name&#xa;role&#xa;hireDate" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1">
+          <mxGeometry x="60" y="300" width="200" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- ADMIN -->
+        <mxCell id="Admin" value="Admin&#xa;PK/FK: adminID&#xa;name" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1">
+          <mxGeometry x="60" y="480" width="180" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Employee-Admin" edge="1" value="1 : 1" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell source="Employee" target="Admin"/>
+        </mxCell>
+
+        <!-- INVENTORY MANAGER -->
+        <mxCell id="Manager" value="InventoryManager&#xa;PK/FK: managerID&#xa;name" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1">
+          <mxGeometry x="60" y="620" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Employee-Manager" edge="1" value="1 : 1" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell source="Employee" target="Manager"/>
+        </mxCell>
+
+        <!-- CASHIER -->
+        <mxCell id="Cashier" value="Cashier&#xa;PK/FK: employeeID&#xa;counterNo" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1">
+          <mxGeometry x="60" y="760" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Employee-Cashier" edge="1" value="1 : 1" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell source="Employee" target="Cashier"/>
+        </mxCell>
+
+        <!-- PRODUCT UPDATE -->
+        <mxCell id="ProductUpdate" value="ProductUpdate&#xa;PK: updateID&#xa;FK: productID&#xa;FK: managerID&#xa;updatedQuantity&#xa;updateType&#xa;updateDate" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#cce5ff;strokeColor=#4a90e2;" vertex="1">
+          <mxGeometry x="320" y="520" width="240" height="160" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Product-ProductUpdate" edge="1" value="1 : M" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell source="Product" target="ProductUpdate"/>
+        </mxCell>
+
+        <mxCell id="Manager-ProductUpdate" edge="1" value="1 : M" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell source="Manager" target="ProductUpdate"/>
+        </mxCell>
+
+        <!-- SUPPLY REQUEST -->
+        <mxCell id="SupplyRequest" value="SupplyRequest&#xa;PK: requestID&#xa;FK: managerID&#xa;FK: supplierID&#xa;requestDate&#xa;status&#xa;notes" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1">
+          <mxGeometry x="600" y="520" width="240" height="160" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Supplier-SupplyRequest" edge="1" value="1 : M" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell source="Supplier" target="SupplyRequest"/>
+        </mxCell>
+
+        <mxCell id="Manager-SupplyRequest" edge="1" value="1 : M" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell source="Manager" target="SupplyRequest"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
